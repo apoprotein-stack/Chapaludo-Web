@@ -1,39 +1,48 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cha'Paludo 機能潔牙骨</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paludo & Mila｜暖心台灣豬 天然寵物手作零嘴</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&family=Caveat:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --forest: #2d4a35;
-      --forest-light: #3d6347;
-      --sage: #7a9e82;
-      --sage-light: #a8c4ad;
-      --cream: #f7f3ec;
-      --warm-white: #fdfaf5;
-      --sand: #e8dcc8;
-      --sand-dark: #c9b99a;
-      --bark: #6b4f3a;
-      --text-dark: #1e2a22;
-      --text-mid: #4a5e4e;
-      --text-light: #7a8e7d;
-      --gold: #c9a96e;
-      --gold-light: #e8d5a8;
+      --kraft:     #c8a97a;
+      --kraft-dk:  #a07c50;
+      --kraft-lt:  #e8d5b0;
+      --cream:     #faf6ee; /* 暖奶油色背景 */
+      --warm:      #f5ede0;
+      --paper:     #f0e6d3;
+      --terra:     #c4623a; /* 暖土色 - 主色 */
+      --terra-lt:  #e8896a;
+      --moss:      #5a7a52; /* 森林綠 - 點綴 */
+      --moss-lt:   #8aaa82;
+      --bark:      #3d2b1a;
+      --ink:       #2c1f0e;
+      --ink-mid:   #5a4030;
+      --cas-red:   #c0392b;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Noto Sans TC', sans-serif;
-      background: var(--warm-white);
-      color: var(--text-dark);
+      background: var(--cream);
+      color: var(--ink);
       overflow-x: hidden;
+      line-height: 1.8;
+    }
+
+    /* 紙張紋理疊加 */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0;
+      pointer-events: none;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     }
 
     /* ── NAV ── */
@@ -41,1279 +50,202 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 1.2rem 3rem;
-      background: rgba(253, 250, 245, 0.88);
+      background: rgba(250, 246, 238, 0.9);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(200, 185, 160, 0.3);
-      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(200,169,122,0.2);
     }
-    .nav-brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: var(--forest);
-      letter-spacing: 0.08em;
-      text-decoration: none;
+    .nav-logo { text-decoration: none; display: flex; flex-direction: column; }
+    .nav-logo-main {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 700; color: var(--bark);
     }
-    .nav-brand span { color: var(--gold); }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.82rem;
-      color: var(--text-mid);
-      text-decoration: none;
-      letter-spacing: 0.12em;
-      font-weight: 400;
-      transition: color 0.2s;
+    .nav-logo-main span { color: var(--terra); }
+    .nav-logo-sub {
+      font-family: 'Caveat', cursive; font-size: 0.8rem; color: var(--ink-mid);
     }
-    .nav-links a:hover { color: var(--forest); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { font-size: 0.85rem; color: var(--ink-mid); text-decoration: none; transition: 0.2s; }
+    .nav-links a:hover { color: var(--terra); }
     .nav-cta {
-      background: var(--forest);
-      color: var(--cream) !important;
-      padding: 0.5rem 1.2rem;
-      border-radius: 2rem;
-      font-size: 0.8rem !important;
-      letter-spacing: 0.1em !important;
-      transition: background 0.2s !important;
+      background: var(--terra); color: white !important;
+      padding: 0.5rem 1.2rem; border-radius: 2rem;
     }
-    .nav-cta:hover { background: var(--forest-light) !important; color: var(--cream) !important; }
 
     /* ── HERO ── */
     .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding-top: 5rem;
-      position: relative;
-      overflow: hidden;
+      min-height: 90vh; display: grid; grid-template-columns: 1.1fr 0.9fr;
+      padding-top: 5rem; align-items: center;
     }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 70% 50%, rgba(122,158,130,0.08) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .hero-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 4rem 3rem 4rem 5rem;
-      position: relative;
-    }
-    .hero-eyebrow {
-      font-size: 0.72rem;
-      letter-spacing: 0.25em;
-      color: var(--sage);
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-    .hero-eyebrow::before {
-      content: '';
-      display: block;
-      width: 2rem;
-      height: 1px;
-      background: var(--sage);
+    .hero-left { padding: 0 5% 0 10%; }
+    .hero-tagline {
+      font-family: 'Caveat', cursive; font-size: 1.5rem; color: var(--moss); margin-bottom: 1rem;
     }
     .hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem, 4.5vw, 4.2rem);
-      font-weight: 400;
-      line-height: 1.15;
-      color: var(--forest);
-      margin-bottom: 0.5rem;
+      font-family: 'Noto Serif TC', serif; font-size: 3.5rem; font-weight: 600;
+      line-height: 1.3; color: var(--bark); margin-bottom: 1.5rem;
     }
-    .hero-title em {
-      font-style: italic;
-      color: var(--bark);
+    .hero-title em { font-style: normal; color: var(--terra); position: relative; }
+    .hero-title em::after {
+      content: ''; position: absolute; bottom: 5px; left: 0; width: 100%;
+      height: 8px; background: rgba(196, 98, 58, 0.15); z-index: -1;
     }
-    .hero-subtitle {
-      font-family: 'Noto Serif TC', serif;
-      font-size: 1.1rem;
-      font-weight: 300;
-      color: var(--text-mid);
-      margin-bottom: 2rem;
-      letter-spacing: 0.05em;
+    .hero-desc { font-size: 1rem; color: var(--ink-mid); margin-bottom: 2.5rem; max-width: 28rem; }
+    
+    .hero-right { position: relative; padding-right: 10%; }
+    .hero-img-box {
+      border-radius: 2rem 2rem 8rem 2rem; /* 不對稱大圓角，增加溫潤感 */
+      overflow: hidden; box-shadow: 15px 20px 50px rgba(61,43,26,0.12);
+      transform: rotate(1deg);
     }
-    .hero-tagline {
-      font-size: 0.9rem;
-      color: var(--text-light);
-      line-height: 1.8;
-      max-width: 28rem;
-      margin-bottom: 3rem;
-      border-left: 2px solid var(--gold);
-      padding-left: 1rem;
-    }
-    .hero-actions { display: flex; gap: 1rem; align-items: center; }
-    .btn-primary {
-      background: var(--forest);
-      color: var(--cream);
-      padding: 0.85rem 2rem;
-      border-radius: 3rem;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      text-decoration: none;
-      transition: all 0.25s;
-      border: none; cursor: pointer;
-    }
-    .btn-primary:hover { background: var(--forest-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(45,74,53,0.2); }
-    .btn-secondary {
-      color: var(--forest);
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      text-decoration: none;
-      display: flex; align-items: center; gap: 0.4rem;
-      border-bottom: 1px solid var(--sage-light);
-      padding-bottom: 2px;
-      transition: color 0.2s;
-    }
-    .btn-secondary:hover { color: var(--bark); }
+    .hero-img-box img { width: 100%; display: block; }
 
-    .hero-right {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4rem 3rem;
-    }
-    .hero-image-wrap {
-      position: relative;
-      width: 100%;
-      max-width: 520px;
-    }
-    .hero-image-bg {
-      position: absolute;
-      width: 85%;
-      height: 85%;
-      top: 7%;
-      left: 7%;
-      background: var(--sand);
-      border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%;
-      opacity: 0.5;
-    }
-    .hero-image {
-      position: relative;
-      width: 100%;
-      border-radius: 2rem;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(45,74,53,0.12);
-    }
-    .hero-image img {
-      width: 100%;
-      aspect-ratio: 4/5;
-      object-fit: cover;
-      display: block;
-    }
-    .hero-badge {
-      position: absolute;
-      bottom: -1.5rem;
-      left: -2rem;
-      background: var(--warm-white);
-      border: 1px solid var(--sand);
-      border-radius: 1rem;
-      padding: 1rem 1.4rem;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-    }
-    .hero-badge-label { font-size: 0.68rem; color: var(--text-light); letter-spacing: 0.1em; text-transform: uppercase; }
-    .hero-badge-value { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--forest); font-weight: 500; }
+    /* ── SECTION COMMONS ── */
+    section { padding: 6rem 0; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .section-head { text-align: center; margin-bottom: 4rem; }
+    .section-title { font-family: 'Noto Serif TC', serif; font-size: 2.2rem; color: var(--bark); }
+    .title-deco { color: var(--terra); font-family: 'Caveat', cursive; font-size: 1.4rem; display: block; margin-bottom: 0.5rem; }
 
-    /* ── SECTION COMMON ── */
-    section { padding: 5rem 0; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
-    .section-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      color: var(--sage);
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-    .section-title {
-      font-family: 'Noto Serif TC', serif;
-      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
-      font-weight: 400;
-      color: var(--forest);
-      line-height: 1.4;
-      margin-bottom: 1rem;
-    }
-    .section-desc {
-      font-size: 0.92rem;
-      color: var(--text-light);
-      line-height: 1.9;
-      max-width: 38rem;
-    }
-    .divider {
-      width: 3rem;
-      height: 2px;
-      background: linear-gradient(90deg, var(--gold), transparent);
-      margin: 1.5rem 0;
-    }
-
-    /* ── MECHANISM ── */
-    .mechanism {
-      background: var(--forest);
-      color: var(--cream);
-      padding: 5rem 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .mechanism::before {
-      content: '';
-      position: absolute;
-      top: -30%;
-      right: -10%;
-      width: 50%;
-      height: 160%;
-      background: radial-gradient(ellipse, rgba(122,158,130,0.15) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .mechanism .section-label { color: var(--sage-light); }
-    .mechanism .section-title { color: var(--cream); }
-    .mechanism .divider { background: linear-gradient(90deg, var(--gold), transparent); }
-    .mech-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-      margin-top: 3rem;
-    }
-    .mech-left {}
-    .mech-desc {
-      font-size: 0.93rem;
-      color: rgba(247,243,236,0.75);
-      line-height: 2;
-      margin-bottom: 2rem;
-    }
-    .mech-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-style: italic;
-      color: var(--gold-light);
-      line-height: 1.6;
-      border-left: 2px solid var(--gold);
-      padding-left: 1.5rem;
-    }
-    .mech-right {}
-    .mech-steps { display: flex; flex-direction: column; gap: 1.5rem; }
-    .mech-step {
-      display: flex;
-      gap: 1.5rem;
-      align-items: flex-start;
-      padding: 1.2rem 1.5rem;
-      background: rgba(255,255,255,0.05);
-      border-radius: 1rem;
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: background 0.2s;
-    }
-    .mech-step:hover { background: rgba(255,255,255,0.09); }
-    .mech-step-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      font-weight: 300;
-      color: var(--gold);
-      line-height: 1;
-      min-width: 2.5rem;
-    }
-    .mech-step-content h4 {
-      font-family: 'Noto Serif TC', serif;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--cream);
-      margin-bottom: 0.3rem;
-    }
-    .mech-step-content p {
-      font-size: 0.82rem;
-      color: rgba(247,243,236,0.65);
-      line-height: 1.7;
-    }
-
-    /* ── PRODUCT MATRIX ── */
-    .product-section { background: var(--cream); }
-    .function-tabs {
-      display: flex;
-      gap: 0.8rem;
-      margin: 2.5rem 0;
-      flex-wrap: wrap;
-    }
-    .func-tab {
-      padding: 0.55rem 1.4rem;
-      border-radius: 3rem;
-      font-size: 0.82rem;
-      letter-spacing: 0.06em;
-      cursor: pointer;
-      border: 1.5px solid transparent;
-      transition: all 0.22s;
-      font-family: 'Noto Sans TC', sans-serif;
-      position: relative;
-    }
-    .func-tab.gut {
-      background: rgba(45,74,53,0.08);
-      color: var(--forest);
-      border-color: rgba(45,74,53,0.2);
-    }
-    .func-tab.gut.active, .func-tab.gut:hover {
-      background: var(--forest);
-      color: var(--cream);
-      border-color: var(--forest);
-    }
-    .func-tab.skin {
-      background: rgba(201,169,110,0.1);
-      color: var(--bark);
-      border-color: rgba(201,169,110,0.3);
-    }
-    .func-tab.skin.active, .func-tab.skin:hover {
-      background: var(--bark);
-      color: var(--cream);
-      border-color: var(--bark);
-    }
-    .func-tab.joint {
-      background: rgba(122,158,130,0.1);
-      color: var(--sage);
-      border-color: rgba(122,158,130,0.3);
-    }
-    .func-tab.joint.disabled {
-      opacity: 0.5; cursor: default;
-    }
-    .func-tab.immune {
-      background: rgba(168,196,173,0.1);
-      color: var(--sage);
-      border-color: rgba(168,196,173,0.3);
-    }
-    .func-tab.immune.disabled {
-      opacity: 0.5; cursor: default;
-    }
-    .coming-badge {
-      font-size: 0.62rem;
-      background: var(--sand);
-      color: var(--text-light);
-      padding: 0.1rem 0.4rem;
-      border-radius: 0.5rem;
-      margin-left: 0.3rem;
-      vertical-align: middle;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.2rem;
-    }
+    /* ── PRODUCTS ── */
+    .products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
     .product-card {
-      background: var(--warm-white);
-      border: 1px solid var(--sand);
-      border-radius: 1.2rem;
-      padding: 1.6rem;
-      transition: all 0.25s;
-      display: none;
-      flex-direction: column;
+      background: white; border-radius: 2rem; overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 10px 30px rgba(61,43,26,0.05);
     }
-    .product-card.visible {
-      display: flex;
+    .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(61,43,26,0.1); }
+    .product-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .product-info { padding: 2.5rem; }
+    .product-meta { font-family: 'Caveat', cursive; color: var(--moss); font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .product-name { font-family: 'Noto Serif TC', serif; font-size: 1.8rem; margin-bottom: 1rem; color: var(--bark); }
+    .product-desc { font-size: 0.95rem; color: var(--ink-mid); margin-bottom: 2rem; }
+    
+    .btn {
+      display: inline-block; padding: 0.8rem 2rem; border-radius: 3rem;
+      text-decoration: none; font-size: 0.9rem; transition: 0.3s;
+      cursor: pointer; border: none;
     }
-    .product-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(45,74,53,0.1);
-      border-color: var(--sage-light);
-    }
-    .card-size-badge {
-      width: 2.4rem;
-      height: 2.4rem;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-    .card-size-badge.forest { background: var(--forest); color: var(--cream); }
-    .card-size-badge.bark { background: var(--bark); color: var(--cream); }
-    .card-size-name {
-      font-family: 'Noto Serif TC', serif;
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--text-dark);
-      margin-bottom: 0.25rem;
-    }
-    .card-weight-range {
-      font-size: 0.75rem;
-      color: var(--text-light);
-      margin-bottom: 1rem;
-    }
-    .card-specs {
-      font-size: 0.78rem;
-      color: var(--text-mid);
-      line-height: 1.9;
-      border-top: 1px solid var(--sand);
-      padding-top: 0.8rem;
-      margin-bottom: 1rem;
-      flex: 1;
-    }
-    .card-price {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: var(--forest);
-      margin-bottom: 0.8rem;
-    }
-    .card-price span { font-size: 0.75rem; color: var(--text-light); font-family: 'Noto Sans TC', sans-serif; font-weight: 400; }
-    .card-btn {
-      display: block;
-      text-align: center;
-      padding: 0.55rem 1rem;
-      border-radius: 3rem;
-      font-size: 0.78rem;
-      letter-spacing: 0.06em;
-      text-decoration: none;
-      background: var(--forest);
-      color: var(--cream);
-      transition: all 0.2s;
-      cursor: pointer;
-      border: none;
-    }
-    .card-btn:hover { background: var(--forest-light); }
-    .card-btn.bark-btn { background: var(--bark); }
-    .card-btn.bark-btn:hover { background: #7d5c45; }
+    .btn-terra { background: var(--terra); color: white; }
+    .btn-terra:hover { background: var(--terra-lt); transform: scale(1.05); }
 
-    /* ── BRAND STORY ── */
-    .story-section { background: var(--warm-white); }
-    .story-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-      margin-top: 3rem;
+    /* ── INTERACTION FOOTER ── */
+    .interaction-banner {
+      background: var(--moss); color: var(--cream); text-align: center; padding: 5rem 2rem;
+      border-radius: 4rem; margin: 4rem 2rem;
     }
-    .story-image-wrap {
-      position: relative;
-    }
-    .story-image-frame {
-      border-radius: 2rem;
-      overflow: hidden;
-      box-shadow: 0 20px 50px rgba(45,74,53,0.1);
-    }
-    .story-image-frame img {
-      width: 100%;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      display: block;
-    }
-    .story-float-card {
-      position: absolute;
-      top: -2rem;
-      right: -2.5rem;
-      background: var(--forest);
-      color: var(--cream);
-      padding: 1.5rem;
-      border-radius: 1.2rem;
-      max-width: 11rem;
-      box-shadow: 0 10px 30px rgba(45,74,53,0.25);
-    }
-    .story-float-card .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
-    .story-float-card p { font-size: 0.78rem; line-height: 1.6; color: rgba(247,243,236,0.85); }
-
-    .story-right {}
-    .story-block { margin-bottom: 2.5rem; }
-    .story-block h3 {
-      font-family: 'Noto Serif TC', serif;
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: var(--forest);
-      margin-bottom: 0.6rem;
-    }
-    .story-block p {
-      font-size: 0.88rem;
-      color: var(--text-mid);
-      line-height: 2;
-    }
-    .cert-row {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
-      flex-wrap: wrap;
-    }
-    .cert-chip {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: var(--cream);
-      border: 1px solid var(--sand);
-      border-radius: 3rem;
-      font-size: 0.78rem;
-      color: var(--text-mid);
-    }
-    .cert-chip .dot {
-      width: 0.5rem; height: 0.5rem;
-      border-radius: 50%;
-      background: var(--sage);
-    }
-
-    /* ── FAQ ── */
-    .faq-section { background: var(--cream); }
-    .faq-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 3rem;
-    }
-    .faq-item {
-      background: var(--warm-white);
-      border: 1px solid var(--sand);
-      border-radius: 1rem;
-      overflow: hidden;
-    }
-    .faq-q {
-      padding: 1.3rem 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      gap: 1rem;
-      transition: background 0.2s;
-    }
-    .faq-q:hover { background: rgba(122,158,130,0.06); }
-    .faq-q span {
-      font-size: 0.88rem;
-      color: var(--text-dark);
-      font-weight: 500;
-      line-height: 1.5;
-    }
-    .faq-icon {
-      font-size: 1.2rem;
-      color: var(--sage);
-      transition: transform 0.25s;
-      min-width: 1.2rem;
-    }
-    .faq-item.open .faq-icon { transform: rotate(45deg); }
-    .faq-a {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s ease;
-      padding: 0 1.5rem;
-    }
-    .faq-item.open .faq-a {
-      max-height: 20rem;
-      padding: 0 1.5rem 1.3rem;
-    }
-    .faq-a p {
-      font-size: 0.84rem;
-      color: var(--text-mid);
-      line-height: 1.9;
-      border-top: 1px solid var(--sand);
-      padding-top: 1rem;
-    }
-
-    /* ── CTA ── */
-    .cta-section {
-      background: linear-gradient(135deg, var(--forest) 0%, #1a3021 100%);
-      padding: 6rem 0;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      height: 200%;
-      background: radial-gradient(ellipse, rgba(201,169,110,0.08) 0%, transparent 60%);
-    }
-    .cta-eyebrow {
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      color: var(--sage-light);
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
-    .cta-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 400;
-      color: var(--cream);
-      line-height: 1.3;
-      margin-bottom: 1rem;
-    }
-    .cta-sub {
-      font-size: 0.9rem;
-      color: rgba(247,243,236,0.65);
-      margin-bottom: 2.5rem;
-    }
-    .cta-btn {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--forest);
-      padding: 0.9rem 2.5rem;
-      border-radius: 3rem;
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.25s;
-    }
-    .cta-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .interaction-banner h2 { font-family: 'Noto Serif TC', serif; font-size: 2rem; margin-bottom: 1rem; }
+    .interaction-banner p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem; }
 
     /* ── FOOTER ── */
-    footer {
-      background: var(--text-dark);
-      color: rgba(247,243,236,0.5);
-      padding: 3rem 0;
-      text-align: center;
-      font-size: 0.78rem;
-      letter-spacing: 0.05em;
-    }
-    footer .footer-brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      color: var(--cream);
-      margin-bottom: 0.5rem;
-    }
+    footer { text-align: center; padding: 4rem 0; background: var(--warm); border-radius: 5rem 5rem 0 0; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+    .footer-copy { font-size: 0.8rem; color: var(--ink-mid); opacity: 0.6; }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .fade-up {
-      opacity: 0;
-      animation: fadeUp 0.7s ease forwards;
-    }
-    .hero-eyebrow { animation-delay: 0.1s; }
-    .hero-title { animation-delay: 0.2s; }
-    .hero-subtitle { animation-delay: 0.3s; }
-    .hero-tagline { animation-delay: 0.4s; }
-    .hero-actions { animation-delay: 0.5s; }
-
-    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-left { padding: 6rem 1.5rem 2rem; }
-      .hero-right { padding: 2rem 1.5rem 4rem; }
-      .mech-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .product-grid { grid-template-columns: repeat(2, 1fr); }
-      .story-grid { grid-template-columns: 1fr; }
-      .story-float-card { display: none; }
-      .faq-grid { grid-template-columns: 1fr; }
-      .container { padding: 0 1.5rem; }
+      .hero { grid-template-columns: 1fr; text-align: center; padding-top: 8rem; }
+      .hero-left { padding: 0 2rem; }
+      .hero-right { padding: 4rem 2rem; }
+      .products-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a class="nav-brand" href="#">Cha<span>'</span>Paludo</a>
+  <a class="nav-logo" href="#">
+    <span class="nav-logo-main">Paludo <span>&</span> Mila</span>
+    <span class="nav-logo-sub">人寵互動的純粹美味</span>
+  </a>
   <ul class="nav-links">
-    <li><a href="#product">產品</a></li>
+    <li><a href="#products">天然手作</a></li>
     <li><a href="#story">品牌故事</a></li>
-    <li><a href="#faq">常見問題</a></li>
-    <li><a href="#reserve" class="nav-cta">預約試吃</a></li>
+    <li><a href="#inquiry" class="nav-cta">詢問訂購</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-eyebrow fade-up">機能潔牙骨</div>
-    <h1 class="hero-title fade-up">
-      嚼一根，<br>
-      早晚兩次，<br>
-      <em>照顧的不只是牙齒</em>
-    </h1>
-    <div class="hero-subtitle fade-up">Cha'Paludo</div>
-    <p class="hero-tagline fade-up">
-      以潔牙為入口，全身為出口。<br>
-      每日咀嚼，同時維護口腔健康與全身機能。
+    <p class="hero-tagline">每一次嚼食，都是一次愛的對話</p>
+    <h1 class="hero-title">給予最 <em>溫暖</em> 的<br>台灣在地滋味</h1>
+    <p class="hero-desc">
+      我們相信，零嘴不只是食物，更是人與毛孩之間最親密的連結。
+      選用 CAS 認證台灣豬，用熱風乾燥鎖住每一份純粹。
     </p>
-    <div class="hero-actions fade-up">
-      <a href="#product" class="btn-primary">查看產品</a>
-      <a href="#story" class="btn-secondary">品牌故事 →</a>
+    <div class="hero-btns">
+      <a href="#products" class="btn btn-terra">探索天然零嘴</a>
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-image-wrap">
-      <div class="hero-image-bg"></div>
-      <div class="hero-image">
-        <img
-          src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&h=750&fit=crop&auto=format&q=80"
-          alt="健康活力的毛孩"
-        />
-      </div>
-      <div class="hero-badge">
-        <div class="hero-badge-label">SGS 專業檢驗</div>
-        <div class="hero-badge-value">合格認證</div>
-      </div>
+    <div class="hero-img-box">
+      <img src="https://images.unsplash.com/photo-1534361960057-19889db9621e?auto=format&fit=crop&w=800&q=80" alt="與毛孩的暖心互動">
     </div>
   </div>
 </section>
 
-<!-- MECHANISM -->
-<section class="mechanism">
-  <div class="container">
-    <div class="section-label">核心機制</div>
-    <h2 class="section-title">潔牙為入口，全身為出口</h2>
-    <div class="divider"></div>
-    <div class="mech-grid">
-      <div class="mech-left">
-        <p class="mech-desc">
-          口腔微生物群落與腸道、皮膚健康之間存在密切的關係。<br>
-          Cha'Paludo 機能潔牙骨從口腔出發，透過每日咀嚼的習慣，
-          讓毛孩在享受潔牙的同時，自然地維護整體健康。
+<section id="products" class="container">
+  <div class="section-head">
+    <span class="title-deco">Pure & Natural</span>
+    <h2 class="section-title">兩款經典，一樣的陪伴</h2>
+  </div>
+  
+  <div class="products-grid">
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1583511655826-05700d52f4d9?auto=format&fit=crop&w=600&q=80" class="product-img" alt="尾冬骨">
+      <div class="product-info">
+        <p class="product-meta">安靜的啃咬時光</p>
+        <h3 class="product-name">台灣豬尾冬骨</h3>
+        <p class="product-desc">
+          豐厚的骨肉層次，適合在慵懶的午後交給毛孩。看著牠專注地啃咬，
+          是忙碌生活中最療癒的靜謐時刻。
         </p>
-        <div class="mech-quote">
-          「一個好習慣，照顧的遠不只一件事」
-        </div>
+        <a href="#inquiry" class="btn btn-terra">了解更多</a>
       </div>
-      <div class="mech-right">
-        <div class="mech-steps">
-          <div class="mech-step">
-            <div class="mech-step-num">01</div>
-            <div class="mech-step-content">
-              <h4>口腔潔淨</h4>
-              <p>物理磨擦去除牙垢，天然成分抑制口腔細菌滋生</p>
-            </div>
-          </div>
-          <div class="mech-step">
-            <div class="mech-step-num">02</div>
-            <div class="mech-step-content">
-              <h4>腸道吸收</h4>
-              <p>咀嚼過程中釋放的機能成分，隨消化進入腸道發揮作用</p>
-            </div>
-          </div>
-          <div class="mech-step">
-            <div class="mech-step-num">03</div>
-            <div class="mech-step-content">
-              <h4>全身循環</h4>
-              <p>支持皮膚光澤、關節靈活與免疫調節的系統性效益</p>
-            </div>
-          </div>
-        </div>
+    </div>
+
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=600&q=80" class="product-img" alt="豬耳多">
+      <div class="product-info">
+        <p class="product-meta">脆口的驚喜獎勵</p>
+        <h3 class="product-name">低溫烘焙豬耳多</h3>
+        <p class="product-desc">
+          極致酥脆的口感，是互動遊戲後最好的獎勵。
+          聽著那清脆的「咔滋」聲，感受牠對你的滿滿愛意。
+        </p>
+        <a href="#inquiry" class="btn btn-terra">了解更多</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRODUCT MATRIX -->
-<section class="product-section" id="product">
-  <div class="container">
-    <div class="section-label">完整產品矩陣</div>
-    <h2 class="section-title">四大機能 × 四種規格</h2>
-    <div class="divider"></div>
-    <p class="section-desc">找到最適合毛孩的保健方案，依照體型與需求選擇。</p>
-
-    <div class="function-tabs">
-      <button class="func-tab gut active" onclick="switchFunc('gut', this)">● 口腸共健</button>
-      <button class="func-tab skin" onclick="switchFunc('skin', this)">● 口皮共健</button>
-      <button class="func-tab joint disabled">● 口關共健 <span class="coming-badge">建置中</span></button>
-      <button class="func-tab immune disabled">● 口免共健 <span class="coming-badge">建置中</span></button>
-    </div>
-
-    <div class="product-grid" id="productGrid">
-      <!-- GUT cards -->
-      <div class="product-card visible" data-func="gut">
-        <div class="card-size-badge forest">S</div>
-        <div class="card-size-name">S 尺寸</div>
-        <div class="card-weight-range">≤5kg 小型犬</div>
-        <div class="card-specs">
-          每盒 30 支（15 日份）<br>
-          每盒重量 180g<br>
-          主成分：菊苣纖維、益生菌
-        </div>
-        <div class="card-price">NT$288 <span>/ 盒</span></div>
-        <button class="card-btn">查看詳情</button>
-      </div>
-      <div class="product-card visible" data-func="gut">
-        <div class="card-size-badge forest">M</div>
-        <div class="card-size-name">M 尺寸</div>
-        <div class="card-weight-range">5–10kg 中型犬</div>
-        <div class="card-specs">
-          每盒 30 支（15 日份）<br>
-          每盒重量 300g<br>
-          主成分：菊苣纖維、益生菌
-        </div>
-        <div class="card-price">NT$480 <span>/ 盒</span></div>
-        <button class="card-btn">查看詳情</button>
-      </div>
-      <div class="product-card visible" data-func="gut">
-        <div class="card-size-badge forest">L</div>
-        <div class="card-size-name">L 尺寸</div>
-        <div class="card-weight-range">10–25kg 大型犬</div>
-        <div class="card-specs">
-          每盒 30 支（15 日份）<br>
-          每盒重量 450g<br>
-          主成分：菊苣纖維、益生菌
-        </div>
-        <div class="card-price">NT$720 <span>/ 盒</span></div>
-        <button class="card-btn">查看詳情</button>
-      </div>
-      <div class="product-card visible" data-func="gut">
-        <div class="card-size-badge forest">XL</div>
-        <div class="card-size-name">XL 尺寸</div>
-        <div class="card-weight-range">&gt;25kg 超大型犬</div>
-        <div class="card-specs">
-          每盒 30 支（15 日份）<br>
-          每盒重量 600g<br>
-          主成分：菊苣纖維、益生菌
-        </div>
-        <div class="card-price">NT$960 <span>/ 盒</span></div>
-        <button class="card-btn">查看詳情</button>
-      </div>
-      <!-- SKIN cards -->
-      <div class="product-card" data-func="skin">
-        <div class="card-size-badge bark">S</div>
-        <div class="card-size-name">S 尺寸</div>
-        <div class="card-weight-range">≤5kg 小型犬</div>
-        <div class="card-specs">
-          每盒 30 支（15 日份）<br>
-          每盒重量 180g<br>
-          主成分：Omega-3、生物素
-        </div>
-        <div class="card-price">NT$288 <span>/ 盒</span></div>
-        <button class="card-btn bark-btn">查看詳情</button>
-      </div>
-      <div class="product-card" data-func="skin">
-        <div class="card-size-badge bark">M</div>
-        <div class="card-size-name">M 尺寸</div>
-        <div class="card-weight-range">5–10kg 中型犬</div>
-        <div class="card-specs">
-          每盒 30 支（15 日份）<br>
-          每盒重量 300g<br>
-          主成分：Omega-3、生物素
-        </div>
-        <div class="card-price">NT$480 <span>/ 盒</span></div>
-        <button class="card-btn bark-btn">查看詳情</button>
-      </div>
-      <div class="product-card" data-func="skin">
-        <div class="card-size-badge bark">L</div>
-        <div class="card-size-name">L 尺寸</div>
-        <div class="card-weight-range">10–25kg 大型犬</div>
-        <div class="card-specs">
-          每盒 30 支（15 日份）<br>
-          每盒重量 450g<br>
-          主成分：Omega-3、生物素
-        </div>
-        <div class="card-price">NT$720 <span>/ 盒</span></div>
-        <button class="card-btn bark-btn">查看詳情</button>
-      </div>
-      <div class="product-card" data-func="skin">
-        <div class="card-size-badge bark">XL</div>
-        <div class="card-size-name">XL 尺寸</div>
-        <div class="card-weight-range">&gt;25kg 超大型犬</div>
-        <div class="card-specs">
-          每盒 30 支（15 日份）<br>
-          每盒重量 600g<br>
-          主成分：Omega-3、生物素
-        </div>
-        <div class="card-price">NT$960 <span>/ 盒</span></div>
-        <button class="card-btn bark-btn">查看詳情</button>
-      </div>
-    </div>
+<section class="container">
+  <div class="interaction-banner">
+    <h2>「牠不懂什麼是成分，但牠懂什麼是愛。」</h2>
+    <p>Paludo & Mila 從自家廚房出發，只為了給家人最安心的那一口。</p>
+    <a href="#inquiry" class="btn" style="background: white; color: var(--moss);">聯繫我們</a>
   </div>
 </section>
 
-<!-- BRAND STORY -->
-<section class="story-section" id="story">
-  <div class="container">
-    <div class="section-label">品牌故事</div>
-    <h2 class="section-title">因為牠們是家人</h2>
-    <div class="divider"></div>
-    <div class="story-grid">
-      <div class="story-image-wrap">
-        <div class="story-image-frame">
-          <img
-            src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=500&h=650&fit=crop&auto=format&q=80"
-            alt="品牌故事"
-          />
-        </div>
-        <div class="story-float-card">
-          <div class="icon">🐾</div>
-          <p>獸醫師推薦<br>台灣在地研發生產</p>
-        </div>
-      </div>
-      <div class="story-right">
-        <div class="story-block">
-          <h3>從一個問題開始</h3>
-          <p>
-            作為毛孩的主人，我們希望給牠們最好的照顧，
-            卻常常不知道從哪裡開始。Cha'Paludo 從口腔健康這個
-            每天都會發生的習慣切入，讓照顧變得具體而持續。
-          </p>
-        </div>
-        <div class="story-block">
-          <h3>科學為基礎</h3>
-          <p>
-            口腸軸（Gut-Oral Axis）的研究指出，口腔微生物群落
-            與腸道健康密切相關。我們以此為核心，開發出兼顧
-            潔牙與全身機能的配方。
-          </p>
-        </div>
-        <div class="story-block">
-          <h3>台灣製造的承諾</h3>
-          <p>
-            在台灣的 GMP 工廠生產，每批次通過 SGS 專業檢驗，
-            讓每一根潔牙骨都能放心地給毛孩享用。
-          </p>
-        </div>
-        <div class="cert-row">
-          <div class="cert-chip"><span class="dot"></span>SGS 專業檢驗合格</div>
-          <div class="cert-chip"><span class="dot"></span>GMP 工廠生產</div>
-          <div class="cert-chip"><span class="dot"></span>獸醫師推薦</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq-section" id="faq">
-  <div class="container">
-    <div class="section-label">常見問題</div>
-    <h2 class="section-title">你可能想知道的事</h2>
-    <div class="divider"></div>
-    <div class="faq-grid">
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>每天都要吃嗎？一天幾根？</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-a">
-          <p>建議早晚各一根，每日 2 根。持續使用 2–4 週後，通常可以觀察到明顯的口氣改善。</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>如何選擇適合的尺寸？</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-a">
-          <p>依體重選擇：S（≤5kg）、M（5–10kg）、L（10–25kg）、XL（>25kg）。若毛孩體重介於兩個尺寸之間，建議選較大的尺寸。</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>口腸共健與口皮共健有何不同？</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-a">
-          <p>口腸共健（PI）主要針對腸道健康，含菊苣纖維與益生菌；口皮共健（PS）主要針對皮膚與毛髮，含 Omega-3 與生物素。兩款均具備基礎口腔潔淨效果。</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>貓咪可以吃嗎？</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-a">
-          <p>目前產品配方針對犬隻設計，尚未針對貓咪進行完整的適口性與安全性測試，暫不建議貓咪食用。</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>有通過什麼安全檢驗？</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-a">
-          <p>每批產品均通過 SGS 專業檢驗合格，在台灣 GMP 認證工廠生產，並有獸醫師確認配方安全性。</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <span>多久可以看到效果？</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-a">
-          <p>口氣改善通常在 1–2 週內可感受到。腸道與皮膚機能的改善因個體差異，一般建議持續使用 4–8 週觀察。</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- RESERVE FORM -->
-<section class="cta-section" id="reserve">
-  <div class="container" style="position:relative;">
-    <div class="cta-eyebrow">限量試吃名額</div>
-    <h2 class="cta-title">讓毛孩先試試看</h2>
-    <p class="cta-sub">填寫資料，我們會在第一批出貨時優先透過 Line 通知你</p>
-
-    <div class="reserve-form-wrap">
-      <!-- 表單 -->
-      <form id="reserveForm" class="reserve-form">
-        <div class="form-row">
-          <div class="form-group">
-            <label>飼主姓名 <span class="req">*</span></label>
-            <input type="text" name="name" placeholder="請輸入姓名" required />
-          </div>
-          <div class="form-group">
-            <label>聯絡電話 <span class="req">*</span></label>
-            <input type="tel" name="phone" placeholder="請輸入電話" required />
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>毛孩名字</label>
-            <input type="text" name="petName" placeholder="（選填）" />
-          </div>
-          <div class="form-group">
-            <label>感興趣的產品</label>
-            <select name="product">
-              <option value="">請選擇</option>
-              <option value="口腸共健-S">口腸共健 S（≤5kg）</option>
-              <option value="口腸共健-M">口腸共健 M（5–10kg）</option>
-              <option value="口腸共健-L">口腸共健 L（10–25kg）</option>
-              <option value="口腸共健-XL">口腸共健 XL（>25kg）</option>
-              <option value="口皮共健-S">口皮共健 S（≤5kg）</option>
-              <option value="口皮共健-M">口皮共健 M（5–10kg）</option>
-              <option value="口皮共健-L">口皮共健 L（10–25kg）</option>
-              <option value="口皮共健-XL">口皮共健 XL（>25kg）</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group full">
-          <label>備註</label>
-          <textarea name="notes" placeholder="如有特殊需求，請填寫（選填）" rows="3"></textarea>
-        </div>
-
-        <!-- Line OA 加入按鈕 -->
-        <div class="line-cta">
-          <p>同時加入我們的 Line OA，第一時間收到出貨通知</p>
-          <a href="https://line.me/R/ti/p/@469fwrxx" target="_blank" class="line-btn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-            加入 Line OA
-          </a>
-        </div>
-
-        <button type="submit" class="form-submit" id="submitBtn">
-          送出預約申請
-        </button>
-      </form>
-
-      <!-- 成功訊息 -->
-      <div id="successMsg" class="success-msg" style="display:none;">
-        <div class="success-icon">🐾</div>
-        <h3>收到了！</h3>
-        <p>我們會在第一批出貨前透過電話聯絡你。<br>也記得加入 Line OA 獲得最新消息！</p>
-        <a href="https://line.me/R/ti/p/@469fwrxx" target="_blank" class="line-btn" style="margin-top:1.5rem;display:inline-flex;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.630 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-          加入 Line OA
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<style>
-.reserve-form-wrap {
-  max-width: 640px;
-  margin: 2.5rem auto 0;
-}
-.reserve-form {
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 1.5rem;
-  padding: 2rem;
-  backdrop-filter: blur(10px);
-}
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-.form-group.full { margin-bottom: 1rem; }
-.form-group label {
-  font-size: 0.78rem;
-  color: rgba(247,243,236,0.75);
-  letter-spacing: 0.06em;
-}
-.req { color: var(--gold); }
-.form-group input,
-.form-group select,
-.form-group textarea {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 0.6rem;
-  padding: 0.7rem 1rem;
-  font-size: 0.85rem;
-  color: var(--cream);
-  font-family: 'Noto Sans TC', sans-serif;
-  outline: none;
-  transition: border-color 0.2s;
-  width: 100%;
-}
-.form-group input::placeholder,
-.form-group textarea::placeholder { color: rgba(247,243,236,0.35); }
-.form-group select option { background: var(--forest); color: var(--cream); }
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: var(--gold);
-}
-.form-group textarea { resize: none; }
-
-.line-cta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  background: rgba(0,195,0,0.08);
-  border: 1px solid rgba(0,195,0,0.2);
-  border-radius: 0.8rem;
-  padding: 0.9rem 1.2rem;
-  margin: 1.2rem 0;
-  flex-wrap: wrap;
-}
-.line-cta p {
-  font-size: 0.8rem;
-  color: rgba(247,243,236,0.7);
-  line-height: 1.5;
-}
-.line-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: #06C755;
-  color: white;
-  padding: 0.55rem 1.2rem;
-  border-radius: 3rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background 0.2s;
-}
-.line-btn:hover { background: #05b34c; }
-
-.form-submit {
-  width: 100%;
-  background: var(--gold);
-  color: var(--forest);
-  border: none;
-  padding: 0.9rem;
-  border-radius: 3rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  cursor: pointer;
-  font-family: 'Noto Sans TC', sans-serif;
-  transition: all 0.25s;
-  margin-top: 0.5rem;
-}
-.form-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
-.form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-
-.success-msg {
-  text-align: center;
-  padding: 3rem 2rem;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 1.5rem;
-}
-.success-icon { font-size: 3rem; margin-bottom: 1rem; }
-.success-msg h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem;
-  color: var(--cream);
-  margin-bottom: 0.8rem;
-}
-.success-msg p {
-  font-size: 0.88rem;
-  color: rgba(247,243,236,0.7);
-  line-height: 1.8;
-}
-
-@media (max-width: 600px) {
-  .form-row { grid-template-columns: 1fr; }
-  .line-cta { flex-direction: column; align-items: flex-start; }
-}
-</style>
-
-<script>
-// ⚠️ 部署 Apps Script 後，把網址貼在這裡
-const APPS_SCRIPT_URL = "請填入你的 Apps Script 網址";
-
-document.getElementById("reserveForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
-  const btn = document.getElementById("submitBtn");
-  btn.disabled = true;
-  btn.textContent = "送出中…";
-
-  const form = e.target;
-  const data = {
-    name: form.name.value,
-    phone: form.phone.value,
-    petName: form.petName.value,
-    product: form.product.value,
-    notes: form.notes.value,
-  };
-
-  try {
-    await fetch(APPS_SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    document.getElementById("reserveForm").style.display = "none";
-    document.getElementById("successMsg").style.display = "block";
-  } catch (err) {
-    btn.disabled = false;
-    btn.textContent = "送出預約申請";
-    alert("送出失敗，請稍後再試");
-  }
-});
-</script>
-
-<!-- FOOTER -->
 <footer>
-  <div class="container">
-    <div class="footer-brand">Cha'Paludo 機能潔牙骨</div>
-    <p>© 2026 Cha'Paludo. All rights reserved.</p>
-  </div>
+  <div class="footer-logo">Paludo <span>&</span> Mila</div>
+  <p style="margin-bottom: 2rem; color: var(--ink-mid);">台灣在地．天然純粹．愛在齒間</p>
+  <div class="footer-copy">© 2026 Paludo & Mila. All rights reserved.</div>
 </footer>
 
 <script>
-  function switchFunc(func, btn) {
-    if (btn.classList.contains('disabled')) return;
-    document.querySelectorAll('.func-tab').forEach(t => t.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.product-card').forEach(card => {
-      if (card.dataset.func === func) {
-        card.classList.add('visible');
-      } else {
-        card.classList.remove('visible');
-      }
-    });
-  }
-
-  function toggleFaq(el) {
-    const item = el.parentElement;
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  }
-
-  // Scroll fade-in
+  // 簡單的捲動顯示動畫
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
       }
     });
-  }, { threshold: 0.1 });
+  });
 
-  document.querySelectorAll('.section-label, .section-title, .divider, .section-desc, .mech-step, .story-block, .product-card, .faq-item').forEach(el => {
+  document.querySelectorAll('.product-card').forEach(el => {
     el.style.opacity = '0';
-    el.style.transform = 'translateY(16px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'all 0.6s ease-out';
     observer.observe(el);
   });
 </script>
